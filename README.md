@@ -19,7 +19,7 @@ Visitor API
 Visitor API SignUp
 ![VisitorApiSignup](https://github.com/iXsas/LibraryMSv3/blob/master/SignupLaukas.jpg?raw=true)
 
-Authorization API
+Authorization API<br>
 ![Authorize]( https://github.com/iXsas/LibraryMSv3/blob/master/AuthorizationEndpoint.jpg?raw=true)
 
 User API
