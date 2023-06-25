@@ -31,7 +31,6 @@ namespace LibraryMSv3.Repositories
         }
         public async Task DeleteImage(Image katrinti)
         {
-            // ImageDto surastaFoto = await _context.Images.FirstOrDefaultAsync(up => up.UserId == userId);
             if (_context.Images != null)
             {
                 _context.Images.Remove(katrinti);

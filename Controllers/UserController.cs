@@ -28,7 +28,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPost("post_User_Details")]
+        [HttpPost("/user/details")]
         public async Task<ActionResult<string>> PostUserDetails(AddInfoDto addInfoDto)
         {
             var userName = User.Identity?.Name;
@@ -43,7 +43,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPost("add_User_Address")]
+        [HttpPost("/user/address")]
         public async Task<ActionResult<string>> AddUserAddress(AddAddressDto addAddressDto)
         {
             var userName = User.Identity?.Name;
@@ -58,7 +58,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPost("upload_User_Photo")]
+        [HttpPost("/upload/user/photo")]
         public async Task<ActionResult<string>> UploadUserPhoto([FromForm] ImageUploadRequest imageUploadRequest)
         {
             var userName = User.Identity?.Name;
@@ -84,7 +84,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPut("update_User_FirstName")]
+        [HttpPut("/user/firstName/")]
         public async Task<ActionResult<string>> UpdateUserFirstName([Required][StringLength(30)] string newFirstName)
         {
             if (ModelState.IsValid)
@@ -102,7 +102,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPut("update_User_LastName")]
+        [HttpPut("/user/LastName/")]
         public async Task<ActionResult<string>> UpdateUserLastName([Required][StringLength(30)] string newLastName)
         {
             if (ModelState.IsValid)
@@ -120,7 +120,7 @@ namespace LibraryMSv3.Controllers
         }
         
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPut("update_User_Personal_code")]
+        [HttpPut("/user/personal/code")]
         public async Task<ActionResult<string>> UpdatePersonalCode([Required] long newPersonalCode)
         {
             if (ModelState.IsValid)
@@ -138,7 +138,7 @@ namespace LibraryMSv3.Controllers
         }
         
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPut("update_User_Phone_number")]
+        [HttpPut("/user/phonenumber")]
         public async Task<ActionResult<string>> UpdatePhoneNumber([Required][StringLength(12)] string newPhoneNumber)
         {
             if (ModelState.IsValid)
@@ -156,7 +156,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPut("update_User_email")]
+        [HttpPut("/user/email")]
         public async Task<ActionResult<string>> UpdateEmail([Required][StringLength(50)] string newEmail)
         {
             if (ModelState.IsValid)
@@ -174,7 +174,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPut("update_User_city")]
+        [HttpPut("/user/city")]
         public async Task<ActionResult<string>> UpdateCity([Required][StringLength(50)] string newCity)
         {
             if (ModelState.IsValid)
@@ -193,7 +193,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPut("update_User_street")]
+        [HttpPut("/user/street")]
         public async Task<ActionResult<string>> UpdateStreet([Required][StringLength(50)] string newStreet)
         {
             if (ModelState.IsValid)
@@ -211,7 +211,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPut("update_User_house_number")]
+        [HttpPut("/user/house_number")]
         public async Task<ActionResult<string>> UpdateHouseNb([Required][StringLength(5)] string newHouseNb)
         {
             if (ModelState.IsValid)
@@ -230,7 +230,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpPut("update_User_flat_number")]
+        [HttpPut("/user/flat_number")]
         public async Task<ActionResult<string>> UpdateFlatNb([Required][StringLength(5)] string newFlatNb)
         {
             if (ModelState.IsValid)
@@ -248,7 +248,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpGet("get_photo")]
+        [HttpGet("/user/photo")]
         public async Task<ActionResult> GetImage()
         {
             var userIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value; 
@@ -262,7 +262,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpDelete("delete_Image")]
+        [HttpDelete("/user/image")]
         public async Task<ActionResult<string>> DeleteImage()
         {
             var userIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -285,7 +285,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "user,admin")]
-        [HttpGet("get_all_user_info")]
+        [HttpGet("/user/all_info")]
         public IActionResult GetUserInformation([Required][StringLength(50)] string idekite_user_id)
         {
             Guid userId = new Guid(idekite_user_id);
@@ -308,7 +308,7 @@ namespace LibraryMSv3.Controllers
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "admin")]
-        [HttpDelete("delete_User")]
+        [HttpDelete("/user")]
         public async Task<ActionResult<string>> DeleteUser([Required][StringLength(100)] string idekite_user_id_kuri_norite_istrinti)
         {
             Guid userId = new Guid(idekite_user_id_kuri_norite_istrinti);

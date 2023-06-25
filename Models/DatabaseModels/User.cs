@@ -7,7 +7,7 @@ namespace LibraryMSv3.Models.DatabaseModels
         [Key]//primary Key
         public Guid Id { get; set; }
         [Required, MaxLength(30)]
-        public string UserName { get; set; } //= string.Empty;
+        public string UserName { get; set; } 
         [Required]
         public byte[] PasswordHash { get; set; }
         [Required]

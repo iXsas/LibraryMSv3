@@ -279,11 +279,11 @@ namespace LibraryMSv3.Services.Services
 
         public async Task<ImageDto?> DeleteImageById(Guid userId)
         {
-            Image? userioVaizdas = await _imageRepository.GetImage(userId);
-            if (userioVaizdas != null)
+            Image? userView = await _imageRepository.GetImage(userId);
+            if (userView != null)
             {
-                await _imageRepository.DeleteImage(userioVaizdas);
-                ImageDto ImageDto = _mapper.Map<ImageDto>(userioVaizdas);
+                await _imageRepository.DeleteImage(userView);
+                ImageDto ImageDto = _mapper.Map<ImageDto>(userView);
                 return ImageDto;
             }
             return null;
